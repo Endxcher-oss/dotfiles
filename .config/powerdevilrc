@@ -1,0 +1,15 @@
+[AC][Performance]
+PowerProfile=performance
+
+[AC][SuspendAndShutdown]
+AutoSuspendIdleTimeoutSec=600
+LidAction=32
+
+[Battery][Performance]
+PowerProfile=power-saver
+
+[BatteryManagement]
+BatteryCriticalAction=8
+
+[LowBattery][Performance]
+PowerProfile=power-saver

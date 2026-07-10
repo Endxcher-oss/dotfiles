@@ -1,0 +1,37 @@
+[CompactMode]
+PreviewSize=32
+
+[ContextMenu]
+ShowCopyToOtherSplitView=false
+ShowMoveToOtherSplitView=false
+ShowViewMode=false
+
+[DetailsMode]
+ExpandableFolders=false
+PreviewSize=32
+
+[ExtractDialog]
+1536x960 screen: Height=640
+1536x960 screen: Width=1024
+DirHistory[$e]=$HOME/Music/
+
+[General]
+RememberOpenedTabs=false
+Version=202
+ViewPropsTimestamp=2026,1,20,13,8,29.701
+
+[KFileDialog Settings]
+Places Icons Auto-resize=false
+Places Icons Static Size=22
+
+[MainWindow]
+MenuBar=Disabled
+
+[Notification Messages]
+ConfirmRenameFileType=false
+
+[PreviewSettings]
+Plugins=appimagethumbnail,glycin-heif,comicbookthumbnail,djvuthumbnail,ebookthumbnail,exrthumbnail,glycin-image-rs,glycin-jxl,jpegthumbnail,kraorathumbnail,windowsimagethumbnail,windowsexethumbnail,opendocumentthumbnail,glycin-svg,svgthumbnail,cursorthumbnail,imagethumbnail,fontthumbnail,directorythumbnail,audiothumbnail
+
+[Search]
+Location=Everywhere

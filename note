@@ -1,1 +1,115 @@
-dotfiles/note/note
+### KDE
+plasma-desktop kscreen kde-gtk-config breeze-gtk wl-clipboard bluedevil plasma-nm plasma-pa kinfocenter
+### 固件包
+linux-firmware-intel linux-firmware-realtek
+### 实用工具
+aur-qdirstat
+
+### 摆脱 vlc
+sudo pacman -S --assume-installed phonon-qt6-backend phonon-qt6
+
+### 环境变量
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx
+
+### WPS 界面缩放
+QT_IM_MODULE=fcitx5 QT_SCREEN_SCALE_FACTORS=1 QT_FONT_DPI=150
+
+### WPS 字体
+## 符号字体
+ttf-wps-fonts
+## 方正字体
+wps-office-fonts
+
+### Qt
+Qt5 缩放: 设置环境变量 QT_SCALE_FACTOR=1.25
+
+Qt 停止日志记录: 设置环境变量 QT_LOGGING_RULES='*=false'
+
+### Pacman 
+实用工具
+pacman-contrib 
+
+系统更新
+sudo pacman -Syu
+
+移除不需要的依赖（孤儿包）
+sudo pacman -Rsn $(pacman -Qtdq)
+
+清除包缓存
+paccache -rk0
+
+列出指定安装的包（官方仓库）
+pacman -Qenq
+
+列出指定安装的包（AUR）
+pacman -Qemq
+
+搜索包
+pacman -Ss	远程仓库
+pacman -Qs	本地仓库
+
+显示包信息
+pacman -Si	远程仓库
+pacman -Qi	本地仓库
+
+### SSD TRIM
+"discard, nodiscard(*)
+Controls whether ext4 should issue discard/TRIM commands to the underlying block device when blocks are freed. This is useful for SSD devices and sparse/thinly-provisioned LUNs, but it is off by default until sufficient testing has been done."
+from "https://docs.kernel.org/admin-guide/ext4.html#options"
+
+启用周期性 fstrim 
+systemctl enable --now fstrim.timer
+
+### 视频硬件加速
+intel-media-driver intel-gpu-tools
+
+### 输入法
+fcitx5-im fcitx5-rime
+
+将多余的输入方案删除
+sudo rm -rf /usr/share/rime-data
+
+安装白霜拼音
+https://github.com/gaboolic/rime-frost
+
+### hmcl 
+缩放：GDK_SCALE=2
+
+### 硬盘基准测试
+kdiskmark
+
+### 不论硬盘为何种类型，更改 I/O 调度器的操作都可以被自动化并持久化。例如，下列展示的 udev 规则将 NVMe 硬盘的调度器设为 none，SSD/eMMC 硬盘设为 bfq，机械硬盘设为 bfq： 
+/etc/udev/rules.d/60-ioschedulers.rules:
+# HDD
+ACTION=="add|change", KERNEL=="sd[a-z]*", ATTR{queue/rotational}=="1", ATTR{queue/scheduler}="bfq"
+
+# SSD
+ACTION=="add|change", KERNEL=="sd[a-z]*|mmcblk[0-9]*", ATTR{queue/rotational}=="0", ATTR{queue/scheduler}="bfq"
+
+# NVMe SSD
+ACTION=="add|change", KERNEL=="nvme[0-9]*", ATTR{queue/rotational}=="0", ATTR{queue/scheduler}="none"
+
+### NTP 时钟源设为阿里云
+/etc/ntp.conf
+server ntp.aliyun.com iburst
+
+### 用 stow 管理 dotfiles
+cd dotfiles/
+(sudo) stow ...
+-d 文件的来源目录，默认当前目录
+-t 文件被链接到的目录
+--adopt 取代原有文件    不要使用！
+--no-folding 创建真实目录后再链接文件    systemd unit 可用
+
+### kitty 启动时最大化窗口
+--start-as maximized
+
+### foliate 避免字符溢出的方法
+把 字体和布局设置-布局-页-边界 的值改为0.02
+
+### 授予 mihomo 使用 tun 的能力
+sudo setcap cap_net_admin+ep /usr/bin/mihomo
+
+sudo efibootmgr -c --disk /dev/nvme0n1 --part 1 --loader '/arch.efi' --unicode

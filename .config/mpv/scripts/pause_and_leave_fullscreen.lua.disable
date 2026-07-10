@@ -1,0 +1,19 @@
+local mp = require("mp")
+
+local function pause_and_leave_fullscreen(name, value)
+    if value == true then
+        mp.set_property("fullscreen", "no")
+    end
+    if value == false and after_fullscreen == 1 then
+        mp.set_property("fullscreen", "yes")
+    end
+end
+
+local function fullscreen_detect(name, value)
+    if value == true then
+        after_fullscreen = 1
+    end
+end
+
+mp.observe_property("pause", "bool", pause_and_leave_fullscreen)
+mp.observe_property("fullscreen", "bool", fullscreen_detect)
