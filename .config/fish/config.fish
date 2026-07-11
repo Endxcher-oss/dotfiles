@@ -99,6 +99,8 @@ alias jb='journalctl -b'
 alias jb-='journalctl -b -1'
 alias paclean='paccache -rk0'
 alias bye='systemctl hibernate'
+alias conf='yadm'
+alias sysconf='sudo yadm --yadm-dir /etc/yadm --yadm-data /etc/yadm/data'
 
 # start KDE at login
 if status --is-login

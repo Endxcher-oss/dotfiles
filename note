@@ -1,3 +1,16 @@
+# create an alias to run yadm for system files
+alias sysyadm="sudo yadm --yadm-dir /etc/yadm --yadm-data /etc/yadm/data"
+
+# initialize the yadm repo using the worktree of "/"
+sysyadm init -w /
+
+# or clone the yadm repo using the worktree of "/"
+sysyadm clone -w / <url>
+
+# continue to use sysyadm for managing system files
+sysyadm add /etc/something.conf
+sysyadm commit -m 'Add something.conf'
+
 ### KDE
 plasma-desktop kscreen kde-gtk-config breeze-gtk wl-clipboard bluedevil plasma-nm plasma-pa kinfocenter
 ### 固件包
