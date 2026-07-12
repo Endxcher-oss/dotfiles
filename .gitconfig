@@ -3,3 +3,5 @@
 	name = Endxcher
 [credential]
 	helper = store
+[init]
+	defaultBranch = main

@@ -11,6 +11,11 @@ sysyadm clone -w / <url>
 sysyadm add /etc/something.conf
 sysyadm commit -m 'Add something.conf'
 
+# 最快上手方案（存储凭据，全局生效)
+git config --global credential.helper store
+git pull  # 输入一次用户名密码，之后就不用再输了
+
+
 ### KDE
 plasma-desktop kscreen kde-gtk-config breeze-gtk wl-clipboard bluedevil plasma-nm plasma-pa kinfocenter
 ### 固件包
