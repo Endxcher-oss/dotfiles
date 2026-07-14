@@ -1,4 +1,6 @@
 *
+!pkglist
+!pkglist-aur
 !note
 !.gitconfig
 !.gitignore
