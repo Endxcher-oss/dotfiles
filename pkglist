@@ -29,7 +29,6 @@ hugo
 intel-gpu-tools
 intel-media-driver
 intel-ucode
-jre21-openjdk
 jre25-openjdk
 kde-gtk-config
 kid3
@@ -56,8 +55,8 @@ plasma-pa
 print-manager
 protontricks
 qalculate-qt
-qbittorrent-enhanced-git
 rar
+rust
 smartmontools
 spectacle
 steam
@@ -68,6 +67,7 @@ tlp-pd
 tree-sitter-python
 ttf-hack-nerd
 wget
+xorg-xeyes
 yadm
 yay
 yt-dlp
