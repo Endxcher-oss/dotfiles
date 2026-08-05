@@ -55,10 +55,11 @@
 !.config/kwalletrc
 !.config/powerdevilrc
 !
-!
-!
-!
-!
+!.local/
+!.local/share/
+!.local/share/easyeffects/
+!.local/share/easyeffects/output/
+!.local/share/easyeffects/output/*
 !
 !
 !
