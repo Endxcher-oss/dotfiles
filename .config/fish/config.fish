@@ -145,3 +145,6 @@ end
 # set -g __fish_git_prompt_color_invalidstate red
 # set -g __fish_git_prompt_color_untrackedfiles $fish_color_normal
 # set -g __fish_git_prompt_color_cleanstate brgreen
+
+# User binaries
+fish_add_path ~/.local/bin

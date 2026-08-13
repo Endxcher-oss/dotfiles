@@ -13,7 +13,7 @@ PreviewSize=32
 [ExtractDialog]
 1536x960 screen: Height=640
 1536x960 screen: Width=1024
-DirHistory[$e]=$HOME/Music/
+DirHistory[$e]=,$HOME/Music/
 
 [General]
 RememberOpenedTabs=false
