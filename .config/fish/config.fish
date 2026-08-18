@@ -148,3 +148,9 @@ end
 
 # User binaries
 fish_add_path ~/.local/bin
+
+
+# Added by Antigravity CLI installer
+set -gx PATH "/home/Endxcher/.local/bin" $PATH
+
+fish_add_path /home/Endxcher/.local/share/pnpm/bin
