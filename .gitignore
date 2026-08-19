@@ -64,10 +64,10 @@
 !.local/share/easyeffects/output/
 !.local/share/easyeffects/output/*
 !
-!
-!
-!
-!
+!.local/bin/
+!.local/bin/runtime/
+!.local/bin/runtime/themes/
+!.local/bin/runtime/themes/*
 !
 !
 !

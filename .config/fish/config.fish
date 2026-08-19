@@ -31,8 +31,8 @@ set --global fish_pager_color_description B3A06D
 set --global fish_pager_color_prefix normal --bold --underline=single
 set --global fish_pager_color_progress brwhite --bold --background=cyan
 set --global fish_pager_color_selected_background --background=FFCC66
-set --global fish_pager_color_selected_completion 
-set --global fish_pager_color_selected_description 
+set --global fish_pager_color_selected_completion
+set --global fish_pager_color_selected_description
 set --global fish_pager_color_selected_prefix
 
 function fish_prompt --description 命令提示符
@@ -74,7 +74,7 @@ function fish_title
 end
 
 # Environment Variables
-export EDITOR=nvim
+export EDITOR=hx
 #export GTK_IM_MODULE=fcitx
 #export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
@@ -85,7 +85,7 @@ alias ls='ls --color=auto --classify=auto --hyperlink=auto'
 alias grep='grep --color=auto'
 alias s='sudo'
 alias se='sudo -e'
-alias v='nvim'
+alias v='hx'
 alias r='sudo pacman -Syu'
 alias rmo='sudo pacman -Rsn $(pacman -Qtdq)'
 alias f='fastfetch'
@@ -148,7 +148,6 @@ end
 
 # User binaries
 fish_add_path ~/.local/bin
-
 
 # Added by Antigravity CLI installer
 set -gx PATH "/home/Endxcher/.local/bin" $PATH
