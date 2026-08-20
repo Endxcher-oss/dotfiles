@@ -28,6 +28,8 @@ max-indent-retain = 0
 wrap-indicator = ""  # set wrap-indicator to "" to hide it
 [keys.select."space"]
 y = ":clipboard-yank"
+[editor.statusline]
+right = [ "file-type", "file-encoding", "file-line-ending", "position" ]
 
 [keys.normal]
 "C-left" = ":buffer-previous"

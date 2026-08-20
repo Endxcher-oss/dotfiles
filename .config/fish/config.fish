@@ -74,7 +74,7 @@ function fish_title
 end
 
 # Environment Variables
-export EDITOR=hx
+export EDITOR=nvim
 #export GTK_IM_MODULE=fcitx
 #export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
@@ -85,7 +85,7 @@ alias ls='ls --color=auto --classify=auto --hyperlink=auto'
 alias grep='grep --color=auto'
 alias s='sudo'
 alias se='sudo -e'
-alias v='hx'
+alias v='nvim'
 alias r='sudo pacman -Syu'
 alias rmo='sudo pacman -Rsn $(pacman -Qtdq)'
 alias f='fastfetch'

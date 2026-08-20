@@ -18,6 +18,10 @@ vim.opt.rtp:prepend(lazypath)
 -- This is also a good place to setup other settings (vim.opt)
 vim.g.mapleader = " "
 
+vim.o.updatetime = 250
+
+vim.opt.shortmess:append("I")
+
 --vim.cmd "syntax on"
 vim.opt.number = true
 vim.opt.relativenumber = true
@@ -56,10 +60,10 @@ map("n", "<leader>x", ":split<CR>", opts)              -- Horizontal split
 map("n", "<leader>v", ":vsplit<CR>", opts)             -- Vertical split
 
 -- Split navigation with Ctrl + h/j/k/l
-map("n", "<C-h>", "<C-w>h", opts)
-map("n", "<C-j>", "<C-w>j", opts)
-map("n", "<C-k>", "<C-w>k", opts)
-map("n", "<C-l>", "<C-w>l", opts)
+-- map("n", "<C-h>", "<C-w>h", opts)
+-- map("n", "<C-j>", "<C-w>j", opts)
+-- map("n", "<C-k>", "<C-w>k", opts)
+-- map("n", "<C-l>", "<C-w>l", opts)
 
 -- Split resizing with Ctrl + y/u/i/o
 --map("n", "<C-y>", ":vertical resize -2<CR>", opts)
@@ -72,6 +76,22 @@ map("n", "<leader>x", ":bd<CR>", opts)
 map("n", "<C-s>", ":w<CR>", opts)
 map("n", "<C-q>", ":q<CR>", opts)
 map("v", "<leader>y", "\"+y", opts)
+
+-- H / L → 光标到行首 / 行尾
+map('n', 'H', '0', opts)      -- 行首
+map('n', 'L', '$', opts)      -- 行尾
+
+-- J / K → 下一页 / 上一页（全屏翻页）
+map('n', 'J', '<C-f>', opts)  -- 向下翻页
+map('n', 'K', '<C-b>', opts)  -- 向上翻页
+
+-- Ctrl+h / Ctrl+l → BufferLine 移动标签（需安装 nvim-bufferline.lua）
+map('n', '<C-h>', ':BufferLineCyclePrev<CR>', opts)
+map('n', '<C-l>', ':BufferLineCycleNext<CR>', opts)
+
+-- Redo similar to Helix
+vim.keymap.set({ 'n', 'v' }, 'U', '<C-r>')
+
 require("lazy").setup({
   spec = {
         {
@@ -85,7 +105,6 @@ require("lazy").setup({
                 extensions = { 'nvim-tree' },
             },
         },
-
         {
             "folke/tokyonight.nvim",
             lazy = false,
@@ -93,22 +112,18 @@ require("lazy").setup({
             config = function()
             require('tokyonight').setup {
                 styles = { functions = { bold = true } } }
-            vim.cmd[[colorscheme tokyonight-night]]
             end,
         },
-
         {
             'akinsho/bufferline.nvim',
             dependencies = 'nvim-tree/nvim-web-devicons',
             opts = {},
         },
-
         {
             'windwp/nvim-autopairs',
             event = "InsertEnter",
             opts = {},
         },
-
         {
             "lukas-reineke/indent-blankline.nvim",
             event = "VeryLazy",
@@ -116,7 +131,6 @@ require("lazy").setup({
             ---@module "ibl" @type ibl.config
             opts = {}, 
         },
-
         {
             "nvim-tree/nvim-tree.lua",
             dependencies = {"nvim-tree/nvim-web-devicons"},
@@ -124,7 +138,6 @@ require("lazy").setup({
                 actions = { open_file = { quit_on_open = true } }
             },
         },
-
         {
             "selimacerbas/markdown-preview.nvim",
             dependencies = { "selimacerbas/live-server.nvim" },
@@ -140,30 +153,24 @@ require("lazy").setup({
             })
             end,
         },
-        -- {
-        --   "navarasu/onedark.nvim",
-        --   priority = 1000, -- make sure to load this before all the other start plugins
-        --   config = function()
-        --     require('onedark').setup {
-        --       style = 'dark',
-        --       code_style = {
-        --           functions = 'bold',
-        --       },
-        --     }
-        --     require('onedark').load()
-        --   end
-        -- },
-
-        -- { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
-
-        -- markdown-preview  https://github.com/iamcco/markdown-preview.nvim
-        --{
-        --  "iamcco/markdown-preview.nvim",
-        --  cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-        --  ft = { "markdown" },
-        --  build = ":call mkdp#util#install()",
-        --},
+        {   
+		    "catppuccin/nvim", name = "catppuccin", priority = 1000,
+            config = function()
+                require('catppuccin').setup ({
+                    flavour = 'mocha',
+                    transparent_background = true,
+                    highlight_overrides = {
+                        mocha = function(mocha)
+                            return { LineNr = { fg = mocha.text }, 
+                                     CursorLineNr = { fg = mocha.yellow, style = { "bold" } }
+                            }
+                        end
+                    }
+                })
+            end
+        }
   },
   install = { colorscheme = { "default" } },
   checker = { enabled = false },
 })
+vim.cmd[[colorscheme catppuccin]]
