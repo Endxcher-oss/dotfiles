@@ -153,3 +153,4 @@ fish_add_path ~/.local/bin
 set -gx PATH "/home/Endxcher/.local/bin" $PATH
 
 fish_add_path /home/Endxcher/.local/share/pnpm/bin
+fish_add_path /home/Endxcher/.cargo/bin

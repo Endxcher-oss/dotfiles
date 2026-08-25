@@ -19,9 +19,9 @@ vim.opt.rtp:prepend(lazypath)
 vim.g.mapleader = " "
 
 vim.o.updatetime = 250
+-- vim.o.ttimeoutlen = 50   -- 等待按键码（如 Esc 转义）的超时，一般设短些
 
 vim.opt.shortmess:append("I")
-
 --vim.cmd "syntax on"
 vim.opt.number = true
 vim.opt.relativenumber = true
@@ -38,62 +38,49 @@ vim.opt.expandtab = true
 vim.opt.tabstop = 4 
 vim.opt.shiftwidth = 4
 
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
+-- vim.g.loaded_netrw = 1
+-- vim.g.loaded_netrwPlugin = 1
 
--- Custom keybindings
-local map = vim.api.nvim_set_keymap
-local opts = { noremap = true, silent = true }
-map("n", "<leader>h", ":set hlsearch!<CR>", opts)     -- Toggle search highlight
--- map("n", "<leader>s", ":set spell!<CR>", opts)        -- Toggle spell check
 
--- Tab navigation
-map("n", "<leader>t", ":tabnew<CR>", opts)  -- Open new tab
-map("n", "<leader>p", ":tabprev<CR>", opts) -- Go to previous tab
-map("n", "<leader>n", ":tabnext<CR>", opts) -- Go to next tab
-
--- Reload configuration
-map("n", "<leader>r", ":source ~/.config/nvim/init.lua<CR>", opts)
-
--- Splits
-map("n", "<leader>x", ":split<CR>", opts)              -- Horizontal split
-map("n", "<leader>v", ":vsplit<CR>", opts)             -- Vertical split
-
--- Split navigation with Ctrl + h/j/k/l
--- map("n", "<C-h>", "<C-w>h", opts)
--- map("n", "<C-j>", "<C-w>j", opts)
--- map("n", "<C-k>", "<C-w>k", opts)
--- map("n", "<C-l>", "<C-w>l", opts)
-
--- Split resizing with Ctrl + y/u/i/o
---map("n", "<C-y>", ":vertical resize -2<CR>", opts)
---map("n", "<C-u>", ":resize +2<CR>", opts)
---map("n", "<C-i>", ":resize -2<CR>", opts)
---map("n", "<C-o>", ":vertical resize +2<CR>", opts)
-
-map("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
-map("n", "<leader>x", ":bd<CR>", opts) 
-map("n", "<C-s>", ":w<CR>", opts)
-map("n", "<C-q>", ":q<CR>", opts)
-map("v", "<leader>y", "\"+y", opts)
-
--- H / L → 光标到行首 / 行尾
-map('n', 'H', '0', opts)      -- 行首
-map('n', 'L', '$', opts)      -- 行尾
-
--- J / K → 下一页 / 上一页（全屏翻页）
-map('n', 'J', '<C-f>', opts)  -- 向下翻页
-map('n', 'K', '<C-b>', opts)  -- 向上翻页
-
--- Ctrl+h / Ctrl+l → BufferLine 移动标签（需安装 nvim-bufferline.lua）
-map('n', '<C-h>', ':BufferLineCyclePrev<CR>', opts)
-map('n', '<C-l>', ':BufferLineCycleNext<CR>', opts)
-
--- Redo similar to Helix
-vim.keymap.set({ 'n', 'v' }, 'U', '<C-r>')
+-- 宏
+-- vim.cmd('let @a = "Hi--\\<Esc>j"') -- 批量注释
 
 require("lazy").setup({
   spec = {
+--------------------- Start plugin definitions -------------------------------------
+        {
+          'stevearc/oil.nvim',
+          ---@module 'oil'
+          ---@type oil.SetupOpts
+          opts = {},
+          -- Optional dependencies
+          dependencies = { "nvim-tree/nvim-web-devicons" },
+          -- dependencies = {  }, -- use if you prefer nvim-web-devicons
+          -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
+          lazy = false,
+	},
+	{ 
+            "folke/which-key.nvim",
+            event = "VeryLazy",
+            opts = {
+                preset = "helix",
+            },
+            keys = {
+                {
+                "<leader>?",
+                function()
+                    require("which-key").show({ global = false })
+                end,
+                desc = "Buffer Local Keymaps (which-key)",
+                },
+            },
+        },
+        -- {
+        --     'numToStr/Comment.nvim',
+        --     config = function()
+        --     require('Comment').setup()
+        --     end
+        -- },
         {
             'nvim-lualine/lualine.nvim',
             dependencies = { 'nvim-tree/nvim-web-devicons' },
@@ -104,15 +91,6 @@ require("lazy").setup({
                 },
                 extensions = { 'nvim-tree' },
             },
-        },
-        {
-            "folke/tokyonight.nvim",
-            lazy = false,
-            priority = 1000,
-            config = function()
-            require('tokyonight').setup {
-                styles = { functions = { bold = true } } }
-            end,
         },
         {
             'akinsho/bufferline.nvim',
@@ -131,13 +109,13 @@ require("lazy").setup({
             ---@module "ibl" @type ibl.config
             opts = {}, 
         },
-        {
-            "nvim-tree/nvim-tree.lua",
-            dependencies = {"nvim-tree/nvim-web-devicons"},
-            opts = {
-                actions = { open_file = { quit_on_open = true } }
-            },
-        },
+        -- {
+        --     "nvim-tree/nvim-tree.lua",
+        --     dependencies = {"nvim-tree/nvim-web-devicons"},
+        --     opts = {
+        --         actions = { open_file = { quit_on_open = true } }
+        --     },
+        -- },
         {
             "selimacerbas/markdown-preview.nvim",
             dependencies = { "selimacerbas/live-server.nvim" },
@@ -154,7 +132,7 @@ require("lazy").setup({
             end,
         },
         {   
-		    "catppuccin/nvim", name = "catppuccin", priority = 1000,
+	        "catppuccin/nvim", name = "catppuccin", priority = 1000,
             config = function()
                 require('catppuccin').setup ({
                     flavour = 'mocha',
@@ -168,9 +146,69 @@ require("lazy").setup({
                     }
                 })
             end
-        }
-  },
+        },
+  },------------------ End plugin definitions -----------------------------
   install = { colorscheme = { "default" } },
   checker = { enabled = false },
 })
+
 vim.cmd[[colorscheme catppuccin]]
+
+-- Custom keybindings
+local map = vim.keymap.set
+local opts = { silent = true }
+map("n", "<leader>h", ":set hlsearch!<CR>", opts)     -- Toggle search highlight
+-- map("n", "<leader>s", ":set spell!<CR>", opts)        -- Toggle spell check
+
+-- Tab navigation
+map("n", "<leader>t", ":tabnew<CR>", opts)  -- Open new tab
+map("n", "<leader>p", ":tabprev<CR>", opts) -- Go to previous tab
+map("n", "<leader>n", ":tabnext<CR>", opts) -- Go to next tab
+
+-- Reload configuration
+map("n", "<leader>r", ":source ~/.config/nvim/init.lua<CR>", opts)
+
+-- Splits
+map("n", "<leader>x", ":split<CR>", opts)              -- Horizontal split
+map("n", "<leader>v", ":vsplit<CR>", opts)             -- Vertical split
+
+map("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
+map("n", "<leader>x", ":bd!<CR>", opts) 
+map({"n", "i", "v"}, "<C-s>", "<Esc>:w<CR>", opts)
+map("n", "<C-q>", ":q<CR>", opts)
+map("v", "<leader>y", "\"+y", opts)
+
+-- H / L → 光标到行首 / 行尾
+map('n', 'H', '0', opts)      -- 行首
+map('n', 'L', '$', opts)      -- 行尾
+
+map('i', '<A-j>', '<Down>', opts)
+map('i', '<A-k>', '<Up>', opts)
+map('i', '<A-h>', '<Left>', opts)
+map('i', '<A-l>', '<Right>', opts)
+
+-- J / K → 下一页 / 上一页（全屏翻页）
+map({'n', 'v'}, 'J', '<C-d>', opts)  -- 向下翻页
+map({'n', 'v'}, 'K', '<C-u>', opts)  -- 向上翻页
+map({'n', 'v'}, '<C-d>', '<C-f>', opts)
+map({'n', 'v'}, '<C-u>', '<C-b>', opts)
+-- Ctrl+h / Ctrl+l → BufferLine 移动标签（需安装 nvim-bufferline.lua）
+map('n', '<C-h>', ':BufferLineCyclePrev<CR>', opts)
+map('n', '<C-l>', ':BufferLineCycleNext<CR>', opts)
+
+-- vim.cmd('nmap <leader>c gcc')
+-- vim.cmd('vmap <leader>c gc')
+vim.keymap.set('n', '<leader>c', 'gcc', { remap = true })
+vim.keymap.set('v', '<leader>c', 'gc', { remap = true })
+-- Redo similar to Helix
+map({ 'n', 'v' }, 'U', '<C-r>')
+
+vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>')
+map('n', '<leader>t', ':term<CR>', opts)
+vim.api.nvim_create_autocmd('TermOpen', {
+    pattern = '*',
+    callback = function()
+        vim.wo.number = true
+        vim.wo.relativenumber = true
+    end,
+})

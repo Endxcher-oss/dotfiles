@@ -5,6 +5,9 @@
 !.gitconfig
 !.gitignore
 
+!word2vec/
+!word2vec/*
+
 !.config/
 !.config/fish/
 !.config/fish/config.fish
