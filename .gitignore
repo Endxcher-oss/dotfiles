@@ -4,7 +4,8 @@
 !note
 !.gitconfig
 !.gitignore
-
+!knowledge/
+!knowledge/*
 !word2vec/
 !word2vec/*
 
