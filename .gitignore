@@ -4,11 +4,11 @@
 !note
 !.gitconfig
 !.gitignore
+!secrets.kdbx
 !knowledge/
 !knowledge/*
 !word2vec/
 !word2vec/*
-
 !.config/
 !.config/fish/
 !.config/fish/config.fish
