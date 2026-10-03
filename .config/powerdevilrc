@@ -1,5 +1,5 @@
 [AC][Performance]
-PowerProfile=performance
+PowerProfile=balanced
 
 [AC][SuspendAndShutdown]
 AutoSuspendIdleTimeoutSec=600

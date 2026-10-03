@@ -73,6 +73,8 @@ function fish_title
     end
 end
 
+fish_vi_key_bindings
+
 # Environment Variables
 export EDITOR=nvim
 #export GTK_IM_MODULE=fcitx
