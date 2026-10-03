@@ -69,6 +69,7 @@
 !.local/share/easyeffects/output/*
 !
 !.local/bin/
+!.local/bin/rewrite-plus.sh
 !.local/bin/runtime/
 !.local/bin/runtime/themes/
 !.local/bin/runtime/themes/*
