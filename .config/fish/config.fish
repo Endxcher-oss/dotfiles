@@ -156,3 +156,6 @@ set -gx PATH "/home/Endxcher/.local/bin" $PATH
 
 fish_add_path /home/Endxcher/.local/share/pnpm/bin
 fish_add_path /home/Endxcher/.cargo/bin
+
+# Pi
+fish_add_path "/home/Endxcher/.pi/agent/bin"

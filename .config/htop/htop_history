@@ -1,7 +1,6 @@
 exe
 min
 splayer
-wps
 flat
 med
 game
@@ -14,3 +13,6 @@ heli
 keep
 wine
 node
+su
+wps
+steamc
