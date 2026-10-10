@@ -10,6 +10,11 @@
 !knowledge/*
 !word2vec/
 !word2vec/*
+!.pi/
+!.pi/agent/
+!.pi/agent/APPEND_SYSTEM.md
+!.pi/agent/skills/
+!.pi/agent/skills/**
 !.config/
 !.config/fish/
 !.config/fish/config.fish
