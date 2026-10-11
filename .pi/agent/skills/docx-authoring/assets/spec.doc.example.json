@@ -1,0 +1,45 @@
+{
+  "title": "英语表达速记（示例）",
+  "notes": "示例 spec：覆盖 docxgen.py 的全部 block 类型，可直接复制改造。",
+  "orientation": "portrait",
+  "blocks": [
+    {"type": "h1", "text": "一、主动要做某事"},
+    {"type": "h2", "text": "1. 表示“想要、愿意”"},
+    {"type": "bullet", "text": "want to do 想要做", "split": "en_zh"},
+    {"type": "bullet", "text": "be willing to do 愿意做", "split": "en_zh"},
+    {"type": "bullets", "items": ["offer to do 主动提出做", "volunteer to do 自愿做"],
+     "split": "en_zh"},
+    {"type": "h2", "text": "2. 数字与读法"},
+    {"type": "bullet", "text": "数字格式有歧义：**05/06/2024**"},
+    {"type": "bullet", "text": "英式 05/06/2024 = 5 June 2024", "level": 1},
+    {"type": "bullet", "text": "美式 05/06/2024 = May 6, 2024", "level": 1},
+    {"type": "label", "text": "口诀："},
+    {"type": "indent", "text": "at 点，on 天，in 段。"},
+
+    {"type": "h1", "text": "二、介词与时间"},
+    {"type": "table", "columns": [14, 40, 46], "rows": [
+      ["介词", "用法", "例子"],
+      ["at", "具体时刻、中午、午夜、夜晚", "at 7, at noon, at midnight, at night"],
+      ["on", "星期、具体日期、具体某天的早中晚", "on Monday, on May 5, on Monday morning"],
+      ["in", "月份、年份、季节、世纪、年代", "in May, in 2024, in summer, in the 21st century"],
+      ["不加介词", "next/last/this/every + 时间", ["next week", "last year", "every day"]]
+    ]},
+
+    {"type": "h1", "text": "三、对比例句"},
+    {"type": "example", "en": "He offered to take on the task.", "zh": "他主动提出承担任务。"},
+    {"type": "example", "en": "He was asked to take on the task.", "zh": "他被要求承担任务。"},
+
+    {"type": "h1", "text": "四、常见错误"},
+    {"type": "error", "text": "❌ in Monday → ✅ on Monday"},
+    {"type": "error", "text": "❌ since three years → ✅ for three years"},
+
+    {"type": "h1", "text": "最简速记"},
+    {"type": "shade", "fill": "FFF2CC", "lines": [
+      "at 点，on 天，in 段；",
+      "next/last/this/every 前不加介词。"
+    ]},
+    {"type": "pagebreak"},
+    {"type": "h2", "text": "附：第二页内容（演示分页）"},
+    {"type": "para", "text": ["第一行。", "第二行。"]}
+  ]
+}
