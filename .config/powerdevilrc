@@ -8,6 +8,9 @@ LidAction=32
 [Battery][Performance]
 PowerProfile=power-saver
 
+[Battery][SuspendAndShutdown]
+LidAction=32
+
 [BatteryManagement]
 BatteryCriticalAction=8
 
